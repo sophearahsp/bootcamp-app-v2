@@ -1,5 +1,5 @@
 import { AppDataSource } from "../data-source";
-import { NextFunction, Request, Response } from "express";
+import { Request, Response } from "express";
 import { Todo } from "../entity/Todo";
 
 export class TodoController {
@@ -7,6 +7,16 @@ export class TodoController {
 
 	getAllTodos = async (request: Request, response: Response) => {
 		const todos = await this.TodoRepository.find();
-		response.status(200).json({ data: todos });
+		response.status(200).json({ todos });
+	}
+
+	addTodo = async (request: Request, response: Response) => {
+		const todo = await this.TodoRepository.insert(request.body);
+		response.status(200).json({ todo });
+	}
+
+	updateTodo = async (request: Request, response: Response) => {
+		const todo = await this.TodoRepository.update(request.params.id, request.body);
+		response.status(200).json({ todo });
 	}
 }

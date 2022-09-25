@@ -1,11 +1,13 @@
 import * as express from "express";
-import { AppDataSource } from "./data-source"
-import { Todo } from "./entity/Todo";
-import { TodoController } from "./controller/TodoController";
+import * as bodyParser from "body-parser";
+import * as cors from "cors";
+import { AppDataSource } from "./data-source";
 import { api } from "./routes";
 
 AppDataSource.initialize().then(async () => {
     const app = express();
+    app.use(bodyParser.json());
+    app.use(cors());
 
     app.use("/api", api);
 
