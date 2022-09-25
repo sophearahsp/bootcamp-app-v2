@@ -1,14 +1,8 @@
-import express from "express";
-const app = express();
+import * as express from "express";
+import { AppDataSource } from "./data-source"
 
-app.get("/hardcoded-todo", (req, res) => {
-    const hardcodedTodo = {
-        "completed": false,
-        "id": 1000,
-        "taskName": "COMP 251 A1"
-    }
+AppDataSource.initialize().then(async () => {
+    const app = express();
 
-    res.json(hardcodedTodo)
+    app.listen(3000);
 })
-
-app.listen(3000);
