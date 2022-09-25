@@ -1,7 +1,7 @@
 import axios from "axios";
 import { TodoI } from "./contexts/TodoItem";
 
-const TODO_API_URL = "http://localhost:3000/api";
+const TODO_API_URL = "http://localhost:3001/api";
 
 export async function getTodos() {
 	try {
