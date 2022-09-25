@@ -11,8 +11,8 @@ export class TodoController {
 	}
 
 	addTodo = async (request: Request, response: Response) => {
-		const todo = await this.TodoRepository.insert(request.body);
-		response.status(200).json({ todo });
+		const todo = await this.TodoRepository.save(request.body);
+		response.status(200).json({ todo: todo });
 	}
 
 	updateTodo = async (request: Request, response: Response) => {

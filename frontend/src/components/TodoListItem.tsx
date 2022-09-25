@@ -1,9 +1,8 @@
-import React from 'react';
-import { ListItemText } from '@mui/material';
+import { Checkbox, FormControlLabel  } from '@mui/material';
 
 const TodoItem = (props: { taskName: string }) => {
     return (
-        <ListItemText primary={props.taskName} />
+        <FormControlLabel control={<Checkbox />} label={props.taskName} />
     )
 }
 

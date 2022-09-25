@@ -11,5 +11,5 @@ AppDataSource.initialize().then(async () => {
 
     app.use("/api", api);
 
-    app.listen(3000);
+    app.listen(3001);
 })

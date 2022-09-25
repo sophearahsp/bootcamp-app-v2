@@ -1,11 +1,12 @@
 import React from 'react';
 import { useState, ChangeEventHandler } from "react";
 import { Box, Button, TextField } from '@mui/material';
-import { TodoContext, TodoContextType } from "../contexts/TodoItem";
+import { TodoContext, TodoContextType, TodoI } from "../contexts/TodoItem";
+import { addTodo } from '../services'
 
 const TodoInput = () => {
     const [inputValue, setInputValue] = useState("");
-    const { todos, setTodos } = React.useContext(TodoContext) as TodoContextType;
+    const { setTodos } = React.useContext(TodoContext) as TodoContextType;
 
 	const onChange: ChangeEventHandler<HTMLInputElement> = ({
 		target: { value },
@@ -15,12 +16,12 @@ const TodoInput = () => {
 
 	const addItem = async () => {
 		try {
-            const newTodo = {
+            const { todo } = await addTodo({
                 taskName: inputValue,
 	            completed: false
-            }
+            } as TodoI)
 
-			setTodos(() => [...todos, newTodo]);
+			setTodos(prevTodos => [...prevTodos, todo]);
 			setInputValue("");
 		} catch (e) {}
 	};
@@ -35,7 +36,7 @@ const TodoInput = () => {
                 value={inputValue}
             />
             <Button onClick={addItem} variant="outlined">
-                Add
+                +
             </Button>
         </Box>
     )
