@@ -18,13 +18,13 @@ Start Docker (postgresql database)
 
 `docker-compose up`
 
-Run server
+In a seperate shell, run server
 
 `npm run dev`
 
 ### **frontend setup**
 
-Change to `/frontend` directory
+In a seperate shell, change to `/frontend` directory
 
 `cd frontend`
 
