@@ -16,7 +16,18 @@ export class TodoController {
 	}
 
 	updateTodo = async (request: Request, response: Response) => {
-		const todo = await this.TodoRepository.update(request.params.id, request.body);
-		response.status(200).json({ todo });
+		const todoToUpdate = await this.TodoRepository.findOneBy({id: parseInt(request.params.id)});
+		const todo = await this.TodoRepository.save({
+				...todoToUpdate,
+				...request.body
+			}
+		);
+		response.status(200).json({ todo: todo });
+	}
+
+	deleteTodo = async (request: Request, response: Response) => {
+		const todoToDelete = await this.TodoRepository.findOneBy({id: parseInt(request.params.id)});
+		const todo = await this.TodoRepository.delete(todoToDelete);
+		response.status(200).json({ todo: todo });
 	}
 }

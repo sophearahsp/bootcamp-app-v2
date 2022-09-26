@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { KeyboardEvent } from 'react';
 import { useState, ChangeEventHandler } from "react";
-import { Box, Button, TextField } from '@mui/material';
+import { Box, TextField } from '@mui/material';
 import { TodoContext, TodoContextType, TodoI } from "../contexts/TodoItem";
 import { addTodo } from '../services'
 
@@ -26,18 +26,24 @@ const TodoInput = () => {
 		} catch (e) {}
 	};
 
+    const onKeyPress = (e: KeyboardEvent<HTMLImageElement>) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            addItem()
+        }
+    }
+
     return (
         <Box>
             <TextField
                 id="outlined-basic"
-                label="task name"
+                label="Add a task"
                 variant="outlined"
                 onChange={onChange}
                 value={inputValue}
+                sx={{ display: 'flex', width: '100%'}}
+                onKeyDown={onKeyPress}
             />
-            <Button onClick={addItem} variant="outlined">
-                +
-            </Button>
         </Box>
     )
 }
