@@ -1,7 +1,6 @@
-import React from 'react';
+import { Container, Typography } from '@mui/material';
 import TodoInput from "./TodoInput";
 import TodoDisplay from "./TodoDisplay";
-import { Box, Container, Typography } from '@mui/material';
 
 const TodoApp = () => {
     return (

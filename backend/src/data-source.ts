@@ -2,6 +2,8 @@ import "reflect-metadata";
 import { DataSource } from "typeorm";
 import { Todo } from "./entity/Todo";
 
+// Creating a Data Source
+// https://typeorm.biunav.com/en/data-source.html
 export const AppDataSource = new DataSource({
 	type: "postgres",
 	host: "localhost",
@@ -15,4 +17,3 @@ export const AppDataSource = new DataSource({
 	migrations: [],
 	subscribers: [],
 });
-
