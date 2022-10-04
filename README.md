@@ -1,11 +1,11 @@
 # bootcamp-app
 
-### **requirements**
+### **Requirements**
 - [Git](https://github.com/git-guides/install-git)
 - [Docker](https://docs.docker.com/desktop/)
 - [NodeJS](https://nodejs.org/en/)
 
-### **backend setup**
+### **Backend setup**
 Change to `/backend` directory
 
 `cd backend`
@@ -22,7 +22,7 @@ In a seperate shell, run server
 
 `npm run dev`
 
-### **frontend setup**
+### **Frontend setup**
 
 In a seperate shell, change to `/frontend` directory
 
