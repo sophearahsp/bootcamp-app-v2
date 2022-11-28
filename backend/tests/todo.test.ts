@@ -52,7 +52,19 @@ describe('Todo tests', () => {
         newTodo.taskName = "COMP 251 A1";
         const savedTodo = await TodoRepository.save(newTodo);
         const res = await request.put("/api/todo/"+savedTodo.id).send({completed: true});
+        expect(res.statusCode).toBe(200);
         expect(res.body.todo.completed).toBe(true);
         expect(res.body.todo.taskName).toBe("COMP 251 A1");
+    });
+
+    it('should delete todo item', async () => {
+        const TodoRepository = AppDataSource.getRepository(Todo);
+        const newTodo = new Todo()
+        newTodo.taskName = "COMP 251 A1";
+        const savedTodo = await TodoRepository.save(newTodo);
+        const res = await request.delete("/api/todo/"+savedTodo.id).send();
+        expect(res.statusCode).toBe(200);
+        const allTodos = await TodoRepository.find();
+        expect(allTodos.length).toBe(0);
     });
 });
