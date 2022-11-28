@@ -45,4 +45,14 @@ describe('Todo tests', () => {
         expect(res.body.todo.completed).toBe(false);
         expect(res.body.todo.taskName).toBe("do laundry");
     });
+
+    it('should update todo item', async () => {
+        const TodoRepository = AppDataSource.getRepository(Todo);
+        const newTodo = new Todo()
+        newTodo.taskName = "COMP 251 A1";
+        const savedTodo = await TodoRepository.save(newTodo);
+        const res = await request.put("/api/todo/"+savedTodo.id).send({completed: true});
+        expect(res.body.todo.completed).toBe(true);
+        expect(res.body.todo.taskName).toBe("COMP 251 A1");
+    });
 });
