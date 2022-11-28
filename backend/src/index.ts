@@ -7,11 +7,11 @@ import * as cors from "cors";
 import { AppDataSource } from "./data-source";
 import { api } from "./routes";
 
+// Create express app
+const app = express();
+
 // Initalizes the Data Source
 AppDataSource.initialize().then(async () => {
-    // Create express app
-    const app = express();
-
     // Using third party middleware
     app.use(bodyParser.json());
     app.use(cors());
@@ -25,3 +25,5 @@ AppDataSource.initialize().then(async () => {
 
 // More on middlware
 // https://expressjs.com/en/guide/using-middleware.html
+
+export default app;
