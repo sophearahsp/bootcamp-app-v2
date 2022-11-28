@@ -1,4 +1,4 @@
-import { AppDataSource } from '../src/data-source';
+import { AppDataSource } from '../../src/data-source';
 
 export const setupDataSource = async () => {
     await AppDataSource.initialize()
