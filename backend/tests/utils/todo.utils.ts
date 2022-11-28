@@ -1,7 +1,7 @@
 import { Todo } from '../../src/entity/Todo';
 import { Repository } from 'typeorm';
 
-export class TodoEntityHelper {
+export default class TodoEntityHelper {
     TodoRepository: Repository<Todo>;
 
     constructor(repository: Repository<Todo>) {

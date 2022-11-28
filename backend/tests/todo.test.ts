@@ -1,6 +1,6 @@
 import {describe, beforeAll, afterAll, afterEach, it, expect} from '@jest/globals';
-import {setupDataSource, destroyDataSource, clearDataSource} from './utils/data.utils';
-import {TodoEntityHelper} from './utils/todo.utils';
+import DataSourceHelper from './utils/data.utils';
+import TodoEntityHelper from './utils/todo.utils';
 import { Todo } from '../src/entity/Todo';
 import { AppDataSource } from '../src/data-source';
 const supertest = require('supertest');
@@ -13,16 +13,16 @@ describe('Todo tests', () => {
     const todoHelper = new TodoEntityHelper(todoRepository);
 
     beforeAll(async () => {
-        await setupDataSource()
-        await clearDataSource()
+        await DataSourceHelper.setupDataSource()
+        await DataSourceHelper.clearDataSource()
     })
     
     afterAll(async () => {
-        await destroyDataSource();
+        await DataSourceHelper.destroyDataSource();
     })
     
     afterEach(async () => {
-        await clearDataSource()
+        await DataSourceHelper.clearDataSource()
     });
 
     it('should get all todos', async () => {
